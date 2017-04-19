@@ -20,7 +20,7 @@ class Template
     }
 
     public static function isActive($action, $activeOnly = false) {
-        if ($action == $_GET['action']) {
+        if (strpos($_GET['action'], $action) === 0) {
             echo $activeOnly ? 'active' : 'class="active"';
         }
     }
