@@ -11,7 +11,11 @@ class Template
     public static function load($template, $argv = array())
     {
         ob_start();
-        require __DIR__.'/../Templates/'.$template.'.php';
+        if (file_exists(__DIR__.'/../Templates/'.$template.'.php')) {
+            include __DIR__.'/../Templates/'.$template.'.php';
+        } else {
+            throwException('ERR_TEMPLATE_NOT_FOUND');
+        }
         $view = ob_get_clean();
         foreach ($argv as $name => $value) {
             $view = str_ireplace("{{ $$name }}", $value, $view);
