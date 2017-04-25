@@ -1,2 +1,6 @@
+# Ignore Intellij Idea Project File
 .idea/
-/config.php
+vendor/
+
+# Ignore Configuration File
+config.php
